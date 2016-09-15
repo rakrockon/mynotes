@@ -526,7 +526,7 @@ var MyNotesApp = React.createClass({
 		});
     setTimeout(function() {
       $grid.isotope('layout');
-    }, 200);
+    }, 500);
 		
 		$('.tooltipped').on({
 			mouseover: function() {
