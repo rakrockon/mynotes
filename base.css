@@ -6,9 +6,6 @@ header, main, footer {
 	  header, main, footer {
 	    padding-left: 0;
 	  }
-	  .mynote-card,.card-sizer{
-	  	width:100% !important;
-	  }
 	  .nav-main{
 		position: fixed;
 		width: 100%;
@@ -25,9 +22,6 @@ header, main, footer {
 	  }
       .custom-tooltip{
         display: none !important;
-      }
-      .cards-container{
-        margin-left: 0px !important;
       }
 }
 #preloader{
@@ -120,7 +114,6 @@ main{
   clear: both;
 }
 .mynote-card,.card-sizer{
-    width: 240px;
     margin: 10px;
 	float: left;
 	vertical-align: top;
