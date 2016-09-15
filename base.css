@@ -23,6 +23,9 @@ header, main, footer {
 	  nav .brand-logo{
 		margin-left: 0px !important;
 	  }
+      .custom-tooltip{
+        display: none !important;
+      }
 }
 #preloader{
 	line-height: 100vh;
