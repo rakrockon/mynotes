@@ -235,7 +235,7 @@ var SideMenu = React.createClass({
             <li><a id="btn-archive" className="sideBorder noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"archive")}><i className="material-icons">archive</i>Archive</a></li>
             <li><a id="btn-trash" className="sideBorder noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"trash")}><i className="material-icons">delete</i>Trash</a></li>
             <li><div className="divider"></div></li>
-            <li><a className="sideBorder waves-effect settings-modal-trigger" href="#settings-modal"><i className="material-icons">settings</i>Settings</a></li>
+            <li><a className="sideBorder waves-effect settings-modal-trigger" ><i className="material-icons">settings</i>Settings</a></li>
             <li><a className="sideBorder waves-effect" href="#!"><i className="material-icons">announcement</i>Send Feedback</a></li>
             <li><a className="sideBorder waves-effect" href="#!"><i className="material-icons">help</i>Help</a></li>
             <li><div className="divider"></div></li>
@@ -499,7 +499,7 @@ var Notes = React.createClass({
 	render() {
 		var notes = [];
 		this.props.notes.forEach(function(note) {
-			notes.push(<Note note={note} key={note._id} colors={colors}/>);
+			notes.push(<Note note={note} key={note.index} colors={colors}/>);
 	    });
 		return (
 			<div>
@@ -527,20 +527,32 @@ var MyNotesApp = React.createClass({
     setTimeout(function() {
       $grid.isotope('layout');
     }, 500);
-		
-		$('.tooltipped').on({
-			mouseover: function() {
-		        event.preventDefault();
-		        var offset = $(this).offset();
-		        $('#custom-tooltip').offset({top:(offset.top+30), left:offset.left});
-		        $('#custom-tooltip').html($(this).attr("data-tooltip"));
-		    },
-		    mouseout: function() {
-		        event.preventDefault();
-		        $('#custom-tooltip').offset({top:0, left:0});
-		        $('#custom-tooltip').html("");
-		    }
-		});
+		$('.createNoteButton').click(function () {
+        $('#create-note-modal').openModal();
+        var div = document.getElementById("note-content");
+
+        div.onfocus = function() {
+            window.setTimeout(function() {
+                var sel, range;
+                if (window.getSelection && document.createRange) {
+                    range = document.createRange();
+                    range.selectNodeContents(div);
+                    range.collapse(true);
+                    sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                } else if (document.body.createTextRange) {
+                    range = document.body.createTextRange();
+                    range.moveToElementText(div);
+                    range.collapse(true);
+                    range.select();
+                }
+            }, 1);
+        };
+
+        div.focus();
+    });
+    
 	},
 	render() {
 		return (
@@ -549,15 +561,82 @@ var MyNotesApp = React.createClass({
 			  	<main>
 			  		<div className="cards-container" id="notesContainer">
 			  			<Notes notes={notes} />
-			        </div>
+			      </div>
+            <a className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">add</i></a>
 			  	</main>
 			  	<ToolTip />
+          <CreateNote/>
 			</div>
 		);
 	}
 })
 
+var CreateNote = React.createClass({
+  getInitialState: function() {
+    return {
+      noteTitle: "",
+      noteContent:"" 
+    };
+  },
+  noteKeyPress: function (type) {
+    
+  },
+  noteKeyUp: function (type) {
+    
+  },
+  componentDidMount: function() {
+    $('#note-title').keyup(function () {
+      var title = $(this).text();
+      if(title.length!=0){
+        $('#note-title-placeholder').hide();
+      } else{
+        $('#note-title-placeholder').show();
+      }
+    })
+
+    $('#note-content').keyup(function () {
+      var title = $(this).text();
+      if(title.length!=0){
+        $('#note-content-placeholder').hide();
+      } else{
+        $('#note-content-placeholder').show();
+      }
+    })
+  },
+  render: function() {
+    return (
+      <div id="create-note-modal" className="modal">
+        <div className="modal-content">
+          <h4 id="note-title-placeholder" className="note-title note-placeholder">Title</h4>
+          <h4 id="note-title" onKeyPress={this.noteKeyPress.bind(this,"title")} onKeyUp={this.noteKeyUp.bind(this,"title")} className="note-title" contentEditable="true" spellCheck="true"></h4>
+          <p id="note-content-placeholder" className="note-placeholder">Take a note..</p>
+          <p contentEditable="true" onKeyPress={this.noteKeyPress.bind(this,"content")} onKeyUp={this.noteKeyUp.bind(this,"content")}  className="note-content" spellCheck="true" id="note-content"></p>
+        </div>
+        <div className="modal-footer">
+          <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+    );
+  }
+})
 var ToolTip = React.createClass({
+  componentDidMount() {
+    
+    $('.tooltipped').on({
+      mouseover: function() {
+            event.preventDefault();
+            var offset = $(this).offset();
+            var height = $(this).innerHeight();
+            $('#custom-tooltip').offset({top:(offset.top+height+5), left:offset.left});
+            $('#custom-tooltip').html($(this).attr("data-tooltip"));
+        },
+        mouseout: function() {
+            event.preventDefault();
+            $('#custom-tooltip').offset({top:0, left:0});
+            $('#custom-tooltip').html("");
+        }
+    });
+  },
 	render() {
 		return (
 			<div className="custom-tooltip toast" id="custom-tooltip">

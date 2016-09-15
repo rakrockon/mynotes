@@ -2,30 +2,8 @@ header, main, footer {
   padding-left: 300px;
 }
 
-@media only screen and (max-width : 992px) {
-	  header, main, footer {
-	    padding-left: 0;
-	  }
-	  .nav-main{
-		position: fixed;
-		width: 100%;
-		top: 0;
-		z-index: 1;
-	  }
-	  header{
-	  	z-index: inherit !important;
-	  	position: inherit !important;
-	  	top: inherit !important;
-	  }
-	  nav .brand-logo{
-		margin-left: 0px !important;
-	  }
-      .custom-tooltip{
-        display: none !important;
-      }
-      .mynote-card,.card-sizer{
-        width: initial !important;
-      }
+.modal{
+    width: 550px;
 }
 #preloader{
 	line-height: 100vh;
@@ -195,4 +173,62 @@ main{
     min-height: 20px !important;
     font-size: 13px;
     padding: 5px;
+}
+.createNoteButton{
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+}
+*{
+    outline: none !important;
+}
+.note-placeholder{
+    position: absolute;
+    margin: 0px;
+    color: rgba(0,0,0,.54);
+}
+#note-content{
+    margin: 0px;
+    position:relative;
+    z-index: 2;
+}
+#note-title{
+    position: relative;
+    z-index: 2;
+}
+.note-title{
+    font-size: 1.58rem;
+}
+
+
+@media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+      .nav-main{
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1;
+      }
+      .cards-container{
+        margin-bottom: 100px;
+      }
+      header{
+        z-index: inherit !important;
+        position: inherit !important;
+        top: inherit !important;
+      }
+      nav .brand-logo{
+        margin-left: 0px !important;
+      }
+      .custom-tooltip{
+        display: none !important;
+      }
+      .mynote-card,.card-sizer{
+        width: initial !important;
+      }
+      .modal {
+        width: 95% !important;
+      }
 }
