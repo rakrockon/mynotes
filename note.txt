@@ -1,0 +1,30 @@
+<!-- DO NOT DELTE THIS BLOCK -->
+<div class="card-sizer"></div>
+<div class="card mynote-card hoverable">
+  <div class="card-content">
+    <span class="card-title">Card Title</span>
+    <p>I am a very simple card. I am good at containing small bits of information.
+    I am convenient because I require little markup to use effectively.</p>
+  </div>
+  <div class="card-action">
+    <div class="note-action-items hide">
+      <a class="blue-grey-text text-darken-2 tooltipped" data-tooltip="Change Colors" href="#!"><i class="material-icons">color_lens</i></a>
+      <a class="blue-grey-text text-darken-2 tooltipped" data-tooltip="Archive" href="#!"><i class="material-icons">archive</i></a>
+      <a class="blue-grey-text text-darken-2 tooltipped" data-tooltip="Delete" href="#!"><i class="material-icons">delete</i></a>
+      <a class="blue-grey-text text-darken-2 tooltipped" data-tooltip="More" href="#!" ><i class=" material-icons">more_vert</i></a>
+    </div>
+  </div>
+</div>
+<!-- DO NOT DELTE THIS BLOCK -->
+
+
+     <!-- Modal Structure -->
+      <div id="settings-modal" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>

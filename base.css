@@ -1,0 +1,189 @@
+header, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+	  header, main, footer {
+	    padding-left: 0;
+	  }
+	  .mynote-card,.card-sizer{
+	  	width:100% !important;
+	  }
+	  .nav-main{
+		position: fixed;
+		width: 100%;
+		top: 0;
+		z-index: 1;
+	  }
+	  header{
+	  	z-index: inherit !important;
+	  	position: inherit !important;
+	  	top: inherit !important;
+	  }
+	  nav .brand-logo{
+		margin-left: 0px !important;
+	  }
+}
+#preloader{
+	line-height: 100vh;
+    z-index: 100000;
+    height: 100vh;
+    position: fixed;
+    margin-top: 10%;
+    width: 100%;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.2s, opacity 0.2s linear;
+}
+nav .brand-logo{
+	font-size: 1.4rem;
+	margin-left: 20px;
+}
+#nav-mobile li.search{
+	margin-bottom: 8px;
+}
+#nav-mobile li.search .search-wrapper {
+    margin: 0 12px;
+    transition: margin .25s ease;
+}
+#nav-mobile li.search .search-wrapper.focused {
+    margin: 0;
+}
+#nav-mobile li.search .search-wrapper input#search {
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    width: 100%;
+    height: 45px;
+    margin: 0;
+    padding: 0 45px 0 15px;
+    border: 0;
+}
+#nav-mobile li.search .search-wrapper i.material-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#nav-mobile li.search .search-wrapper input#search:focus {
+    outline: none;
+}
+.side-nav li a,.side-nav li a i{
+	color: #4e4e4e !important;
+}
+.active{
+	background-color: #eaeaea !important;
+    border-left: 8px solid #009688;
+    margin-left: 0px;
+    font-weight: 900 !Important;
+    color: #000 !important;
+}
+
+header{
+	position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+header .nav-main i{
+	font-size: 24px;
+}
+main{
+	margin-top: 70px;
+}
+.material-tooltip{
+	margin-top: 0px !important;
+	padding: 8px;
+	font-size: 0.8rem;
+	min-height: 20px;
+	border-radius: 5px;
+}
+.cards-container{
+	margin: 20px;
+}
+.cards-container:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.mynote-card,.card-sizer{
+    width: 240px;
+    margin: 10px;
+	float: left;
+	vertical-align: top;
+	cursor: context-menu;
+}
+.mynote-card .card-content{
+	padding: 10px;
+}
+.mynote-card .card-content .card-title {
+    line-height: 40px;
+}
+.mynote-card .card-action a{
+	margin-right: 10px !important;
+    padding-top: 10px;
+}
+.mynote-card .card-action i{
+	font-size: 20px;
+}
+.mynote-card .card-action{
+	height: 32px;
+	border-top: 0px;
+	padding: 0px;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: right;
+}
+.colors-container{
+    width: 135px;
+    height: 70px;
+    background: white;
+    position: absolute;
+    top: -70px;
+    right: 20px;
+    text-align: left;
+    padding: 5px;
+    margin: 0px;
+}
+.colors-container .circle{
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    margin: 0px 3px;
+    cursor: pointer;
+    border: 1px solid #cecece;
+}
+.colors-container .circle:hover{
+	border: 1px solid #484848;
+}
+.preloader{
+    width: 100%;
+    line-height: 100vh;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+}
+.preloader_img{
+	background-image: url("");
+}
+.colors-container .circle i{
+    margin: 1px;
+    color: #6d6d6d;
+    position: absolute;
+}
+#custom-tooltip{
+	position: fixed;
+    top: 0px;
+    left: 0px;
+    min-height: 20px !important;
+    font-size: 13px;
+    padding: 5px;
+}
