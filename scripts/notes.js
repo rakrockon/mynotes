@@ -251,7 +251,7 @@ var MainNav = React.createClass({
       <nav className="nav-main">
             <div className="nav-wrapper row teal">
               <div className="col s12">
-                  <a href="#!" className="brand-logo">My Notes</a>
+                  <a href="#!" className="brand-logo">Scratchpad</a>
                   <a href="#" data-activates="nav-mobile" className="button-collapse"><i className=" material-icons">menu</i></a>
                   <ul className="right">
                     <li className="hide"><a href="sass.html"><i className="material-icons">search</i></a></li>
@@ -466,8 +466,8 @@ var Note = React.createClass({
   		var that = this;
   		this.refs.ActionItmesRef.showActionItmes(status);
   		setTimeout(function() {
-  			$('.cards-container').isotope();
-		}, 100);
+    			$('.cards-container').isotope();
+  		}, 0);
   	},
   	componentDidMount: function() {
 		//$('.tooltipped').tooltip({delay: 50});
