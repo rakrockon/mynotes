@@ -27,7 +27,7 @@ header, main, footer {
         display: none !important;
       }
       .cards-container{
-        margin-left: 10px;
+        margin-left: 10px !important;
       }
 }
 #preloader{
