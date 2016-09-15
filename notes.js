@@ -1269,7 +1269,7 @@ var MyNotesApp = React.createClass({
 var ToolTip = React.createClass({
 	render() {
 		return (
-			<div className="custom-tooltip toast" id="custom-tooltip">
+			<div className="custom-tooltip toast hide-on-small-only" id="custom-tooltip">
 				
 			</div>
 		);
