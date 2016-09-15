@@ -23,6 +23,9 @@ header, main, footer {
       .custom-tooltip{
         display: none !important;
       }
+      .mynote-card,.card-sizer{
+        width: initial !important;
+      }
 }
 #preloader{
 	line-height: 100vh;
@@ -78,11 +81,17 @@ nav .brand-logo{
 .side-nav li a,.side-nav li a i{
 	color: #4e4e4e !important;
 }
-.active{
+.sideBorder{
+    border-left: 5px solid #ffffff;
+}
+.side-nav li a.noteStatusBtn.active{
 	background-color: #eaeaea !important;
-    border-left: 8px solid #009688;
+    border-left: 5px solid #009688;
     margin-left: 0px;
-    font-weight: 900 !Important;
+    font-weight: 900 !important;
+    color: #000 !important;
+}
+.side-nav li a.noteStatusBtn.active i{
     color: #000 !important;
 }
 
@@ -114,6 +123,7 @@ main{
   clear: both;
 }
 .mynote-card,.card-sizer{
+    width: 260px;
     margin: 10px;
 	float: left;
 	vertical-align: top;

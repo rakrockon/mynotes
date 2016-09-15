@@ -942,15 +942,15 @@ var SideMenu = React.createClass({
             <li className="search hide" id="searchContainer">
               <Search />
             </li>
-            <li><a id="btn-current" className="noteStatusBtn waves-effect waves-teal active" onClick={this.showNotes.bind(this,"current")}><i className="material-icons">lightbulb_outline</i>Notes</a></li>
-            <li><a id="btn-archive" className="noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"archive")}><i className="material-icons">archive</i>Archive</a></li>
-            <li><a id="btn-trash" className="noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"trash")}><i className="material-icons">delete</i>Trash</a></li>
+            <li><a id="btn-current" className="sideBorder noteStatusBtn waves-effect waves-teal active" onClick={this.showNotes.bind(this,"current")}><i className="material-icons">lightbulb_outline</i>Notes</a></li>
+            <li><a id="btn-archive" className="sideBorder noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"archive")}><i className="material-icons">archive</i>Archive</a></li>
+            <li><a id="btn-trash" className="sideBorder noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"trash")}><i className="material-icons">delete</i>Trash</a></li>
             <li><div className="divider"></div></li>
-            <li><a className="waves-effect settings-modal-trigger" href="#settings-modal"><i className="material-icons">settings</i>Settings</a></li>
-            <li><a className="waves-effect" href="#!"><i className="material-icons">announcement</i>Send Feedback</a></li>
-            <li><a className="waves-effect" href="#!"><i className="material-icons">help</i>Help</a></li>
+            <li><a className="sideBorder waves-effect settings-modal-trigger" href="#settings-modal"><i className="material-icons">settings</i>Settings</a></li>
+            <li><a className="sideBorder waves-effect" href="#!"><i className="material-icons">announcement</i>Send Feedback</a></li>
+            <li><a className="sideBorder waves-effect" href="#!"><i className="material-icons">help</i>Help</a></li>
             <li><div className="divider"></div></li>
-            <li><a className="waves-effect waves-red" href="#!"><i className="material-icons">power_settings_new</i>Log Out</a></li>
+            <li><a className="sideBorder waves-effect waves-red" href="#!"><i className="material-icons">power_settings_new</i>Log Out</a></li>
           </ul>
     );
   }
