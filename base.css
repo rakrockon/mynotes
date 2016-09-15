@@ -26,6 +26,9 @@ header, main, footer {
       .custom-tooltip{
         display: none !important;
       }
+      .cards-container{
+        margin-left: 10px;
+      }
 }
 #preloader{
 	line-height: 100vh;
