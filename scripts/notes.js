@@ -1,149 +1,3 @@
-var notes = [
-  {
-    "_id": "57daa566f28ea57fa2780840",
-    "index": 0,
-    "color": "Orange",
-    "title": "Quizmo",
-    "content": "Laboris incididunt reprehenderit dolor in. Commodo commodo est qui sit reprehenderit incididunt amet. Aliquip ullamco occaecat ipsum deserunt anim pariatur velit et. Ad anim ut sint Lorem ad ipsum id nostrud laboris. Deserunt adipisicing sunt eiusmod aute dolor.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa566306ba6fe3fba5352",
-    "index": 1,
-    "color": "White",
-    "title": "Accupharm",
-    "content": "Cillum officia elit tempor incididunt. Aliqua fugiat eu eu cupidatat ea aliquip nulla. Quis nostrud occaecat aliqua mollit adipisicing elit veniam eiusmod eiusmod nulla commodo.\r\n",
-    "status": "archive"
-  },
-  {
-    "_id": "57daa5667a498e510e0ab76f",
-    "index": 2,
-    "color": "Green",
-    "title": "Uxmox",
-    "content": "In excepteur ex exercitation tempor non excepteur amet. Consequat est Lorem ea qui cillum nostrud. Dolor ex consectetur nulla cupidatat ea occaecat sint adipisicing do occaecat amet incididunt velit mollit.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa5669eef69d0e175b47f",
-    "index": 3,
-    "color": "Yellow",
-    "title": "Corecom",
-    "content": "Commodo irure Lorem id aute cupidatat in commodo cupidatat. Irure id irure nostrud mollit consequat sint laborum ea mollit ipsum. Duis aliquip sit commodo et nostrud aute mollit sit aute id nisi et.\r\n",
-    "status": "trash"
-  },
-  {
-    "_id": "57daa5660c6cc3535f404946",
-    "index": 4,
-    "color": "Green",
-    "title": "Poshome",
-    "content": "Ullamco consequat reprehenderit duis elit ex labore nisi ea culpa mollit labore dolor commodo occaecat. Exercitation consequat consequat reprehenderit sit exercitation minim nostrud eiusmod voluptate reprehenderit in. Ipsum irure dolor incididunt tempor ea nulla aliqua in cillum Lorem pariatur irure sint enim. Quis exercitation tempor consequat nostrud ullamco ullamco. Dolore sunt occaecat esse excepteur proident cillum tempor sit ea. Aute occaecat do amet anim excepteur pariatur irure ad laboris irure dolore elit ut. Deserunt aliquip cillum cillum ut quis.\r\n",
-    "status": "trash"
-  },
-  {
-    "_id": "57daa5668f4bedc217196b52",
-    "index": 5,
-    "color": "Green",
-    "title": "Hotcakes",
-    "content": "Sint deserunt cupidatat culpa qui reprehenderit veniam. Reprehenderit laboris et fugiat enim. Aliquip minim proident eiusmod est deserunt. Aute ad ea nostrud enim aute sint adipisicing. Lorem enim culpa excepteur officia culpa aliquip laboris.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa566fcf0acece81c0f79",
-    "index": 6,
-    "color": "Blue",
-    "title": "Buzzopia",
-    "content": "Enim dolor laboris excepteur mollit pariatur Lorem pariatur mollit duis. Ad officia mollit sit cillum aliqua non sit non eu ea qui adipisicing tempor est. Ea aliquip officia ut nisi deserunt exercitation elit eiusmod incididunt Lorem pariatur pariatur velit. Eiusmod sint voluptate qui proident reprehenderit ex culpa aliquip pariatur ea adipisicing qui deserunt.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa5664a2377e9c7252c61",
-    "index": 7,
-    "color": "White",
-    "title": "Insource",
-    "content": "Sit ex nostrud aliqua enim cillum cillum minim commodo aliqua aliqua voluptate. Quis nulla ut mollit quis qui cupidatat velit Lorem consectetur sunt. Aliqua ea in commodo aliqua deserunt amet quis consequat magna dolore adipisicing.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa56640cd7f45f6b7844b",
-    "index": 8,
-    "color": "White",
-    "title": "Deminimum",
-    "content": "Pariatur nostrud ullamco magna laboris laborum ut. Duis esse eu sint voluptate voluptate id mollit id mollit do deserunt nostrud laborum dolore. Nostrud nostrud laboris amet veniam dolore in ut nulla mollit quis esse veniam aliquip do. Cillum voluptate do fugiat exercitation excepteur mollit tempor. Fugiat nisi ad minim cupidatat anim ipsum et in nisi veniam sit proident. Consectetur magna pariatur non culpa ad aute consequat pariatur sint. Reprehenderit velit culpa voluptate eu id adipisicing officia.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa5666e4e695f1b4b1c83",
-    "index": 9,
-    "color": "White",
-    "title": "Emoltra",
-    "content": "Veniam velit sunt esse sint dolor. Aliquip occaecat sint aliquip non non amet cillum eiusmod ad esse incididunt. Do velit ut aliquip aliqua exercitation veniam et magna adipisicing reprehenderit irure incididunt. Id eiusmod cillum esse culpa voluptate quis mollit qui incididunt dolor ea. Non aliquip elit ut ad occaecat irure esse eiusmod adipisicing nulla cupidatat aliquip id. Dolore aute exercitation ea amet sit cupidatat labore id Lorem anim.\r\n",
-    "status": "trash"
-  },
-  {
-    "_id": "57daa566c1a5945b8d9e5084",
-    "index": 10,
-    "color": "White",
-    "title": "Insectus",
-    "content": "Do aliqua do sunt aliqua culpa magna amet ipsum ullamco elit. Quis ipsum consequat aute ea nulla consequat sit amet incididunt excepteur do incididunt amet. Amet laborum quis labore excepteur aute officia culpa incididunt minim est. Occaecat est anim occaecat eiusmod irure velit Lorem exercitation voluptate exercitation enim. Nulla qui magna magna proident consequat commodo.\r\n",
-    "status": "archive"
-  },
-  {
-    "_id": "57daa5662bc167c59284bb18",
-    "index": 11,
-    "color": "Yellow",
-    "title": "Utarian",
-    "content": "Et nisi tempor excepteur laborum cillum ullamco aute proident pariatur non Lorem incididunt ea. Lorem sit irure cillum nostrud non officia cillum in eu anim laborum. Amet exercitation occaecat mollit tempor est dolore est eiusmod officia ea laboris adipisicing. Est ipsum aliqua anim quis mollit. Ex amet commodo cupidatat ad.\r\n",
-    "status": "trash"
-  },
-  {
-    "_id": "57daa566b38dba98974b2828",
-    "index": 12,
-    "color": "Yellow",
-    "title": "Lunchpad",
-    "content": "Fugiat aliqua amet esse incididunt sint in in. Do nulla eu elit do duis ex ad aliqua. Quis veniam esse enim et. Ullamco qui aliquip commodo veniam elit labore laborum veniam laboris excepteur tempor do. Proident esse laborum non aliquip do adipisicing elit enim.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa566811da3a2bd4beb14",
-    "index": 13,
-    "color": "Yellow",
-    "title": "Frenex",
-    "content": "Velit quis sint voluptate exercitation exercitation aliquip magna sint laboris eu excepteur do irure consequat. Duis ullamco reprehenderit ex excepteur ad et do. Do dolore ipsum officia dolore excepteur officia nostrud aliqua fugiat do.\r\n",
-    "status": "trash"
-  },
-  {
-    "_id": "57daa566174b22e717796f42",
-    "index": 14,
-    "color": "Blue",
-    "title": "Qualitern",
-    "content": "Quis ea dolore non laboris. Do reprehenderit fugiat nulla aliquip. Consectetur dolor non laborum in duis proident minim anim aliqua amet. Amet reprehenderit ullamco aute amet aute consectetur irure eu nostrud. Culpa amet aute enim exercitation ullamco. Irure labore commodo cupidatat enim nulla incididunt adipisicing tempor laborum eu ex dolor et.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa566de5afe0e2f98abc2",
-    "index": 15,
-    "color": "Green",
-    "title": "Quintity",
-    "content": "Eiusmod ipsum Lorem veniam voluptate ipsum non sint sunt sunt voluptate. Duis tempor magna velit pariatur adipisicing aliquip mollit ea tempor adipisicing pariatur amet eu. Id laboris exercitation eu elit aliqua minim eu ipsum qui velit reprehenderit mollit eiusmod eu. Anim reprehenderit tempor commodo ut consequat laboris et aliquip labore minim quis. Cupidatat cupidatat exercitation sint consequat ut non minim est. Et consectetur minim ipsum in Lorem tempor consectetur commodo dolore.\r\n",
-    "status": "archive"
-  },
-  {
-    "_id": "57daa566da2d795301fc645d",
-    "index": 16,
-    "color": "Blue",
-    "title": "Ronelon",
-    "content": "Dolore duis duis officia veniam tempor anim ullamco est. Est mollit labore enim nisi magna pariatur eiusmod dolore magna. Laborum et esse non tempor quis. Labore nulla in excepteur pariatur nulla cillum nulla laboris. Duis enim ad cillum et sunt exercitation velit elit mollit ex aute tempor. Anim anim sit velit et aliquip fugiat ad. Velit eu in dolore eiusmod.\r\n",
-    "status": "current"
-  },
-  {
-    "_id": "57daa566294f27b4ec2b0545",
-    "index": 17,
-    "color": "Grey",
-    "title": "Zorromop",
-    "content": "Laboris laborum occaecat aliquip irure tempor cillum excepteur exercitation deserunt. Laborum labore pariatur consequat elit ea id aute cupidatat. Amet et consectetur pariatur sint aliqua exercitation.\r\n",
-    "status": "current"
-  }
-]
 var colors = [
 	{
 		class: "white",
@@ -447,7 +301,7 @@ var Note = React.createClass({
 				colorClass = this.props.colors[i].class;
 		}
 		this.setState({
-  			noteMainClass : "card mynote-card hoverable "+colorClass+" "+this.props.note.status,
+  			noteMainClass : "card mynote-card hoverable "+colorClass+" "+this.props.note.status+" note-"+this.props.note.index,
   			noteColor : colorClass
   		});	
   	},
@@ -510,9 +364,73 @@ var Notes = React.createClass({
 })
 
 var MyNotesApp = React.createClass({
+  getInitialState: function() {
+    return {
+     notes :[
+        {
+          "index": 0,
+          "color": "Red",
+          "title": "Tsunamia",
+          "content": "Aliquip sunt sit eu ea irure veniam ad deserunt ut. Velit culpa dolor officia veniam nisi elit Lorem veniam irure non pariatur id magna ad. Lorem fugiat ullamco do cupidatat velit exercitation exercitation fugiat. Eu officia voluptate non minim enim anim culpa in ea. Sint mollit pariatur ipsum in do minim ex tempor irure nulla cillum tempor ad non. Aliqua culpa sunt Lorem adipisicing eiusmod qui adipisicing. Ullamco laborum culpa et reprehenderit officia est incididunt ipsum.\r\n",
+          "status": "archive"
+        },
+        {
+          "index": 1,
+          "color": "Yellow",
+          "title": "Futuris",
+          "content": "Consequat enim tempor do ipsum ex duis amet. Culpa commodo cillum sit id esse labore aute quis. Laborum veniam deserunt do eiusmod id enim nulla excepteur.\r\n",
+          "status": "current"
+        },
+        {
+          "index": 2,
+          "color": "Red",
+          "title": "Lumbrex",
+          "content": "Non laboris fugiat esse irure minim pariatur sit ullamco dolor fugiat Lorem. Aute culpa do adipisicing amet Lorem ut nulla eiusmod pariatur consectetur enim nostrud elit. Elit fugiat cillum eiusmod nulla nulla consequat deserunt. Duis culpa eu mollit eu. Esse incididunt commodo ullamco deserunt elit.\r\n",
+          "status": "archive"
+        },
+        {
+          "index": 3,
+          "color": "Teal",
+          "title": "Tripsch",
+          "content": "Non non ullamco esse in fugiat duis consequat laborum eiusmod ex. Nulla irure enim occaecat anim culpa et ut. Aute occaecat aliquip eiusmod proident nulla esse do labore culpa deserunt. Reprehenderit eu incididunt mollit et eiusmod anim qui veniam magna amet aliqua magna. Ipsum ipsum laboris elit ipsum occaecat culpa exercitation non tempor amet velit exercitation nisi aliquip. Consectetur voluptate nisi excepteur cillum ipsum tempor officia non cupidatat sint mollit do labore consequat. Et culpa dolore id nostrud ipsum officia amet reprehenderit non.\r\n",
+          "status": "current"
+        },
+        {
+          "index": 4,
+          "color": "Blue",
+          "title": "Acium",
+          "content": "Voluptate ex nostrud esse nostrud. Dolore id deserunt deserunt ad minim fugiat. Consequat anim eu aliquip voluptate fugiat cupidatat.\r\n",
+          "status": "current"
+        },
+        {
+          "index": 5,
+          "color": "Red",
+          "title": "Chillium",
+          "content": "Minim velit ad anim laborum. Aliqua laboris dolore ex dolore Lorem. Reprehenderit incididunt excepteur quis dolor eiusmod ea reprehenderit dolor magna commodo sunt duis aute Lorem. Irure ea culpa irure mollit. Deserunt tempor magna proident labore adipisicing incididunt velit pariatur commodo.\r\n",
+          "status": "trash"
+        },
+        {
+          "index": 6,
+          "color": "Orange",
+          "title": "Satiance",
+          "content": "Aliqua nisi esse reprehenderit sit duis proident exercitation. Officia ea aliquip non proident id velit ea tempor cillum Lorem in. Irure consequat sint velit exercitation cupidatat enim cupidatat ipsum enim.\r\n",
+          "status": "archive"
+        }
+      ] 
+    };
+  },
+  noteActionButtonClick: function (note) {
+    var notes = this.state.notes;
+    notes.push(note);
+    this.setState({
+      notes: notes
+    });
+  },
+  componentDidUpdate(prevProps, prevState) {
+    $('.cards-container').isotope( 'prepended', $('.note-'+(this.state.notes.length-1)) );
+  },
 	componentDidMount: function() {
-		
-		
+
 		$('#myNotesApp').fadeIn("slow");
 			$('#preloader').fadeOut("slow");
 		var $grid =$('.cards-container').isotope({
@@ -549,7 +467,6 @@ var MyNotesApp = React.createClass({
                 }
             }, 1);
         };
-
         div.focus();
     });
     
@@ -560,12 +477,12 @@ var MyNotesApp = React.createClass({
 			  	<Header />
 			  	<main>
 			  		<div className="cards-container" id="notesContainer">
-			  			<Notes notes={notes} />
+			  			<Notes notes={this.state.notes} />
 			      </div>
             <a className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">add</i></a>
 			  	</main>
 			  	<ToolTip />
-          <CreateNote/>
+          <CreateNote currentIndex={this.state.notes.length} noteActionButtonClick={this.noteActionButtonClick}/>
 			</div>
 		);
 	}
@@ -578,42 +495,43 @@ var CreateNote = React.createClass({
       noteContent:"" 
     };
   },
-  noteKeyPress: function (type) {
-    
-  },
   noteKeyUp: function (type) {
-    
+    var value = "";
+    if(type == "note-title-placeholder"){
+      value = this.refs.noteTitleRef.innerHTML;
+    }else if(type == "note-content-placeholder") {
+      value = this.refs.noteContentRef.innerHTML;
+    }
+    if(value.length !=0){
+      $('#'+type).hide()
+    } else {
+      $('#'+type).show()
+    }
   },
-  componentDidMount: function() {
-    $('#note-title').keyup(function () {
-      var title = $(this).text();
-      if(title.length!=0){
-        $('#note-title-placeholder').hide();
-      } else{
-        $('#note-title-placeholder').show();
-      }
-    })
-
-    $('#note-content').keyup(function () {
-      var title = $(this).text();
-      if(title.length!=0){
-        $('#note-content-placeholder').hide();
-      } else{
-        $('#note-content-placeholder').show();
-      }
-    })
+  noteDonebtn: function (type) {
+    var note = {};
+    note.index = this.props.currentIndex;
+    note.title = this.refs.noteTitleRef.innerHTML;
+    note.content = this.refs.noteContentRef.innerHTML;
+    note.color = "white";
+    note.status = "current";
+    this.refs.noteTitleRef.innerHTML = "";
+    this.refs.noteContentRef.innerHTML = "";
+    $('.note-placeholder').show();
+    this.props.noteActionButtonClick(note);
+     $('#create-note-modal').closeModal();
   },
   render: function() {
     return (
       <div id="create-note-modal" className="modal">
         <div className="modal-content">
           <h4 id="note-title-placeholder" className="note-title note-placeholder">Title</h4>
-          <h4 id="note-title" onKeyPress={this.noteKeyPress.bind(this,"title")} onKeyUp={this.noteKeyUp.bind(this,"title")} className="note-title" contentEditable="true" spellCheck="true"></h4>
+          <h4 ref="noteTitleRef" id="note-title"  onKeyUp={this.noteKeyUp.bind(this,"note-title-placeholder")} className="note-title" contentEditable="true" spellCheck="true"></h4>
           <p id="note-content-placeholder" className="note-placeholder">Take a note..</p>
-          <p contentEditable="true" onKeyPress={this.noteKeyPress.bind(this,"content")} onKeyUp={this.noteKeyUp.bind(this,"content")}  className="note-content" spellCheck="true" id="note-content"></p>
+          <p ref="noteContentRef" contentEditable="true" onKeyUp={this.noteKeyUp.bind(this,"note-content-placeholder")}  className="note-content" spellCheck="true" id="note-content"></p>
         </div>
         <div className="modal-footer">
-          <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+          <a onClick={this.noteDonebtn.bind(this,"save")} href="#!" className="waves-effect waves-green btn-flat">Done</a>
         </div>
       </div>
     );
