@@ -255,84 +255,74 @@ var ActionItmes = React.createClass({
 	render() {
 		return (
 			<div className={this.props.noteActionItemsClass}>
-		        <a ref="colorsRef" className={this.state.colorClass} data-tooltip="Change Colors" href="#!" onMouseOver={this.colorMouseOver} onMouseOut={this.colorMouseOut}><i className="material-icons">color_lens</i></a>
+		    <a ref="colorsRef" className={this.state.colorClass} data-tooltip="Change Colors" href="#!" onMouseOver={this.colorMouseOver} onMouseOut={this.colorMouseOut}><i className="material-icons">color_lens</i></a>
 				<a ref="archiveRef" className={this.state.archiveClass} onClick={this.actionSelected.bind(this,"archive")} data-tooltip="Archive" href="#!"><i className="material-icons">archive</i></a>
 				<a ref="unarchiveRef" className={this.state.unarchiveClass} onClick={this.actionSelected.bind(this,"unarchive")} data-tooltip="Unarchive" href="#!"><i className="material-icons">unarchive</i></a>
 				<a ref="deleteRef" className={this.state.deleteClass} onClick={this.actionSelected.bind(this,"delete")} data-tooltip="Delete" href="#!"><i className="material-icons">delete</i></a>
 				<a ref="restoreRef" className={this.state.restoreClass} onClick={this.actionSelected.bind(this,"restore")} data-tooltip="Restore" href="#!"><i className="material-icons">restore</i></a>
 				<a ref="deleteFRef" className={this.state.deleteFClass} onClick={this.actionSelected.bind(this,"delete-forever")} data-tooltip="Delete Forever" href="#!"><i className="material-icons">delete_sweep</i></a>
-		    </div>
+		  </div>
 		);
 	}
 })
 /* Note */
 var Note = React.createClass({
 	getInitialState: function() {
-  		return {
-  			noteActionItemsClass: "note-action-items",
-  			noteMainClass : "card mynote-card hoverable",
-  			noteColor : "",
-  			status : this.props.note.status
-  		};
-  	},
-  	mouseOver: function () {
-  		this.setState({
-  			noteActionItemsClass : "note-action-items"
-  		});
-  	},
-  	mouseOut: function () {
-  		this.setState({
-  			noteActionItemsClass : "note-action-items"
-  		});	
-  	},
-  	colorMouseOver: function () {
-  		this.refs.colorSelector.colorMouseOver();
-  	},
-  	colorMouseOut: function () {
-  		this.refs.colorSelector.colorMouseOut();
-  	},
-  	changeColor : function (newColor) {
-  		this.setColor(newColor);
-  	},
-  	setColor: function (color) {
-  		var colorClass = "";
-		for (var i = 0; i < this.props.colors.length; i++) {
-			if(this.props.colors[i].color == color)
-				colorClass = this.props.colors[i].class;
+		return {
+			noteActionItemsClass: "note-action-items",
+			noteMainClass : "card mynote-card hoverable",
+			noteColor : "",
+			status : this.props.note.status
+		};
+	},
+	colorMouseOver: function () {
+		this.refs.colorSelector.colorMouseOver();
+	},
+	colorMouseOut: function () {
+		this.refs.colorSelector.colorMouseOut();
+	},
+	changeColor : function (newColor) {
+		this.setColor(newColor);
+	},
+	setColor: function (color) {
+		var colorClass = "";
+	for (var i = 0; i < this.props.colors.length; i++) {
+		if(this.props.colors[i].color == color)
+			colorClass = this.props.colors[i].class;
+	}
+	this.setState({
+			noteMainClass : "card mynote-card hoverable "+colorClass+" "+this.props.note.status+" note-"+this.props.note.index,
+			noteColor : colorClass
+		});	
+	},
+	actionSelected: function (action) {
+		var status = "";
+		if(action == "archive"){
+			status = "archive";
+		} else if(action == "unarchive" || action == "restore"){
+			status = "current";
+		} else if(action == "delete"){
+			status = "trash";
 		}
 		this.setState({
-  			noteMainClass : "card mynote-card hoverable "+colorClass+" "+this.props.note.status+" note-"+this.props.note.index,
-  			noteColor : colorClass
-  		});	
-  	},
-  	actionSelected: function (action) {
-  		var status = "";
-  		if(action == "archive"){
-  			status = "archive";
-  		} else if(action == "unarchive" || action == "restore"){
-  			status = "current";
-  		} else if(action == "delete"){
-  			status = "trash";
-  		}
-  		this.setState({
-  			noteMainClass : "card mynote-card hoverable "+this.state.noteColor+" "+status
-  		});	
-  		var that = this;
-  		this.refs.ActionItmesRef.showActionItmes(status);
-  		setTimeout(function() {
-    			$('.cards-container').isotope();
-  		}, 0);
-  	},
-  	componentDidMount: function() {
-		//$('.tooltipped').tooltip({delay: 50});
+			noteMainClass : "card mynote-card hoverable "+this.state.noteColor+" "+status
+		});	
+		var that = this;
+		this.refs.ActionItmesRef.showActionItmes(status);
+		setTimeout(function() {
+  			$('.cards-container').isotope();
+		}, 0);
 	},
+  updateNote: function (note) {
+    this.props.updateNote(note);
+  },
 	componentWillMount() {
 		this.setColor(this.props.note.color);
 	},
 	render: function(){
 		
 		return (
-		  <div ref="noteComponent" className={this.state.noteMainClass} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+		  <div ref="noteComponent" className={this.state.noteMainClass} onClick={this.updateNote.bind(this,this.props.note)}>
 		    <div className="card-content">
 		      <span className="card-title">{this.props.note.title}</span>
 		      <p>{this.props.note.content}</p>
@@ -342,18 +332,23 @@ var Note = React.createClass({
 		      <ColorSelector ref="colorSelector" colors={this.props.colors} currentColor={this.props.note.color} changeColor={this.changeColor}/>
 		    </div>
 		  </div>
+      
 		);
 	}
 });
 /* Notes */
 var Notes = React.createClass({
+  updateNote: function (note) {
+    this.props.openNoteModalBtn(note);
+  },
 	componentDidMount: function() {
 		
 	},
 	render() {
 		var notes = [];
+    var that = this;
 		this.props.notes.forEach(function(note) {
-			notes.push(<Note note={note} key={note.index} colors={colors}/>);
+			notes.push(<Note updateNote={that.updateNote} note={note} key={note.index} colors={colors}/>);
 	    });
 		return (
 			<div>
@@ -416,15 +411,49 @@ var MyNotesApp = React.createClass({
           "content": "Aliqua nisi esse reprehenderit sit duis proident exercitation. Officia ea aliquip non proident id velit ea tempor cillum Lorem in. Irure consequat sint velit exercitation cupidatat enim cupidatat ipsum enim.\r\n",
           "status": "archive"
         }
-      ] 
+      ] ,
+      note: {}
     };
   },
-  noteActionButtonClick: function (note) {
+  noteActionButtonClick: function (note,type) {
     var notes = this.state.notes;
-    notes.push(note);
+    if(type == "create"){
+      notes.push(note);
+    } else {
+      notes.forEach(function(n) {
+        if(n.index == note.index){
+          alert('matched');
+          notes[n.index] == note;
+        }
+      });
+    }
     this.setState({
       notes: notes
     });
+  },
+  openNoteModalBtn: function (note) {
+    $('#create-note-modal').openModal();
+    var div = document.getElementById("note-content");
+    this.refs.creatNote.loadNote(note);
+    div.onfocus = function() {
+        window.setTimeout(function() {
+            var sel, range;
+            if (window.getSelection && document.createRange) {
+                range = document.createRange();
+                range.selectNodeContents(div);
+                range.collapse(true);
+                sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            } else if (document.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(div);
+                range.collapse(true);
+                range.select();
+            }
+        }, 1);
+    };
+    div.focus();
   },
   componentDidUpdate(prevProps, prevState) {
     $('.cards-container').isotope( 'prepended', $('.note-'+(this.state.notes.length-1)) );
@@ -448,31 +477,6 @@ var MyNotesApp = React.createClass({
     setTimeout(function() {
       $grid.isotope('layout');
     }, 500);
-		$('.createNoteButton').click(function () {
-        $('#create-note-modal').openModal();
-        var div = document.getElementById("note-content");
-
-        div.onfocus = function() {
-            window.setTimeout(function() {
-                var sel, range;
-                if (window.getSelection && document.createRange) {
-                    range = document.createRange();
-                    range.selectNodeContents(div);
-                    range.collapse(true);
-                    sel = window.getSelection();
-                    sel.removeAllRanges();
-                    sel.addRange(range);
-                } else if (document.body.createTextRange) {
-                    range = document.body.createTextRange();
-                    range.moveToElementText(div);
-                    range.collapse(true);
-                    range.select();
-                }
-            }, 1);
-        };
-        div.focus();
-    });
-    
 	},
 	render() {
 		return (
@@ -480,12 +484,12 @@ var MyNotesApp = React.createClass({
 			  	<Header />
 			  	<main>
 			  		<div className="cards-container" id="notesContainer">
-			  			<Notes notes={this.state.notes} />
+			  			<Notes notes={this.state.notes} openNoteModalBtn={this.openNoteModalBtn}/>
 			      </div>
-            <a className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">mode_edit</i></a>
+            <a onClick={this.openNoteModalBtn.bind(this,null)} className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">mode_edit</i></a>
 			  	</main>
 			  	<ToolTip />
-          <CreateNote currentIndex={this.state.notes.length} noteActionButtonClick={this.noteActionButtonClick}/>
+          <CreateNote ref="creatNote" colors={colors} note={this.state.note} currentIndex={this.state.notes.length} noteActionButtonClick={this.noteActionButtonClick}/>
 			</div>
 		);
 	}
@@ -495,15 +499,44 @@ var CreateNote = React.createClass({
   getInitialState: function() {
     return {
       noteTitle: "",
-      noteContent:"" 
+      noteContent:"",
+      createNoteModalClass : "modal",
+      noteColor: "white",
+      note : this.props.note,
+      noteActionType: "create"
     };
+  },
+  loadNote: function (note) {
+    if(note){
+      this.setColor(note.color);
+      this.setState({
+        noteTitle: note.title,
+        noteContent: note.content,
+        noteActionType: "udpate",
+        note: note
+      });
+      this.refs.noteTitleRef.innerText = note.title;
+      this.refs.noteContentRef.innerText = note.content;
+      $('.note-placeholder').hide();
+    }else{
+      this.setColor("White");
+      this.setState({
+        noteTitle: "",
+        noteContent: "", 
+        noteActionType : "create",
+        note: {}
+      });
+      this.refs.noteTitleRef.innerText ="";
+      this.refs.noteContentRef.innerText = "";
+      $('.note-placeholder').show();
+    }
   },
   noteKeyUp: function (type) {
     var value = "";
     if(type == "note-title-placeholder"){
-      value = this.refs.noteTitleRef.innerHTML;
+      value = this.refs.noteTitleRef.innerText;
     }else if(type == "note-content-placeholder") {
-      value = this.refs.noteContentRef.innerHTML;
+      value = this.refs.noteContentRef.innerText;
     }
     if(value.length !=0){
       $('#'+type).hide()
@@ -511,22 +544,50 @@ var CreateNote = React.createClass({
       $('#'+type).show()
     }
   },
+  colorMouseOver: function () {
+    this.refs.colorSelector.colorMouseOver();
+  },
+  colorMouseOut: function () {
+    this.refs.colorSelector.colorMouseOut();
+  },
+  changeColor : function (newColor) {
+      this.setColor(newColor);
+  },
+  setColor: function (color) {
+    var colorClass = "";
+    for (var i = 0; i < this.props.colors.length; i++) {
+      if(this.props.colors[i].color == color)
+        colorClass = this.props.colors[i].class;
+    }
+    this.setState({
+      createNoteModalClass : "modal "+colorClass,
+      noteColor : color
+    }); 
+  },
   noteDonebtn: function (type) {
     var note = {};
-    note.index = this.props.currentIndex;
+    
     note.title = this.refs.noteTitleRef.innerText;
     note.content = this.refs.noteContentRef.innerText;
-    note.color = "white";
+    note.color = this.state.noteColor;
     note.status = "current";
     this.refs.noteTitleRef.innerHTML = "";
     this.refs.noteContentRef.innerHTML = "";
     $('.note-placeholder').show();
-    this.props.noteActionButtonClick(note);
-     $('#create-note-modal').closeModal();
+    if(note.title.length || note.content.length){
+      if(this.state.noteActionType == "create"){
+        note.index = this.props.currentIndex;
+        this.props.noteActionButtonClick(note,"create");
+      } else {
+        note.index = this.state.note.index;
+        this.props.noteActionButtonClick(note,"update");
+      }
+    }
+    $('#create-note-modal').closeModal();
   },
   render: function() {
     return (
-      <div id="create-note-modal" className="modal">
+      <div id="create-note-modal" className={this.state.createNoteModalClass}>
         <div className="modal-content">
           <h4 id="note-title-placeholder" className="note-title note-placeholder">Title</h4>
           <h4 ref="noteTitleRef" id="note-title"  onKeyUp={this.noteKeyUp.bind(this,"note-title-placeholder")} className="note-title" contentEditable="true" spellCheck="true"></h4>
@@ -535,6 +596,8 @@ var CreateNote = React.createClass({
         </div>
         <div className="modal-footer">
           <a onClick={this.noteDonebtn.bind(this,"save")} href="#!" className="waves-effect waves-green btn-flat">Done</a>
+          <a ref="colorsRef" className="change-color blue-grey-text text-darken-2 right tooltipped" data-tooltip="Change Colors" href="#!"  onMouseOver={this.colorMouseOver} onMouseOut={this.colorMouseOut}><i className="material-icons">color_lens</i></a>
+          <ColorSelector className="colors-container" ref="colorSelector" colors={this.props.colors} currentColor={this.state.noteColor} changeColor={this.changeColor}/>
         </div>
       </div>
     );
@@ -553,7 +616,7 @@ var ToolTip = React.createClass({
         },
         mouseout: function() {
             event.preventDefault();
-            $('#custom-tooltip').offset({top:0, left:0});
+            $('#custom-tooltip').offset({top:-100, left:0});
             $('#custom-tooltip').html("");
         }
     });

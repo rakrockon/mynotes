@@ -85,13 +85,6 @@ header .nav-main i{
 main{
 	margin-top: 90px;
 }
-.material-tooltip{
-	margin-top: 0px !important;
-	padding: 8px;
-	font-size: 0.8rem;
-	min-height: 20px;
-	border-radius: 5px;
-}
 .cards-container{
 	margin: 20px;
 }
@@ -117,7 +110,7 @@ main{
 	margin-right: 10px !important;
     padding-top: 10px;
 }
-.mynote-card .card-action i{
+.card-action i{
 	font-size: 20px;
 }
 .mynote-card .card-action{
@@ -165,14 +158,16 @@ main{
     margin: 1px;
     color: #6d6d6d;
     position: absolute;
+    font-size: 20px;
 }
 #custom-tooltip{
 	position: fixed;
-    top: 0px;
+    top: -100px;
     left: 0px;
     min-height: 20px !important;
     font-size: 13px;
     padding: 5px;
+    z-index: 10000;
 }
 .createNoteButton{
     position: fixed;
@@ -198,6 +193,18 @@ main{
 }
 .note-title{
     font-size: 1.58rem;
+}
+#create-note-modal .change-color{
+    margin: 13px 0;
+}
+#create-note-modal .colors-container{
+    padding: 10px 0;
+    top: 55px;
+    right: 50px;
+    z-index: 2;
+}
+.modal .modal-footer{
+    background: transparent;
 }
 @media only screen and (min-width : 992px) {
     .createNoteButton {
