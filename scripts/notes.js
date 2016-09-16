@@ -511,8 +511,8 @@ var CreateNote = React.createClass({
   noteDonebtn: function (type) {
     var note = {};
     note.index = this.props.currentIndex;
-    note.title = this.refs.noteTitleRef.innerHTML;
-    note.content = this.refs.noteContentRef.innerHTML;
+    note.title = this.refs.noteTitleRef.innerText;
+    note.content = this.refs.noteContentRef.innerText;
     note.color = "white";
     note.status = "current";
     this.refs.noteTitleRef.innerHTML = "";
