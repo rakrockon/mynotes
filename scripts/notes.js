@@ -422,7 +422,6 @@ var MyNotesApp = React.createClass({
     } else {
       notes.forEach(function(n) {
         if(n.index == note.index){
-          alert('matched');
           notes[n.index] == note;
         }
       });
