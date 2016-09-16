@@ -176,8 +176,8 @@ main{
 }
 .createNoteButton{
     position: fixed;
-    bottom: 35px;
-    right: 35px;
+    bottom: 30px;
+    right: 30px;
 }
 *{
     outline: none !important;
@@ -212,7 +212,7 @@ main{
         z-index: 1;
       }
       .cards-container{
-        margin-bottom: 100px;
+        margin-bottom: 90px;
       }
       header{
         z-index: inherit !important;
