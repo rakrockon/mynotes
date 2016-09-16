@@ -225,10 +225,7 @@ main{
       .custom-tooltip{
         display: none !important;
       }
-      .mynote-card,.card-sizer{
-        width: initial !important;
-      }
-      .modal {
+      .modal,.mynote-card,.card-sizer {
         width: 95% !important;
       }
 }
