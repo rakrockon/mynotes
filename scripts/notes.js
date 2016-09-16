@@ -105,7 +105,7 @@ var MainNav = React.createClass({
       <nav className="nav-main">
             <div className="nav-wrapper row teal">
               <div className="col s12">
-                  <a href="#!" className="brand-logo">Scratchpad</a>
+                  <a href="#!" className="brand-logo">Scribble</a>
                   <a href="#" data-activates="nav-mobile" className="button-collapse"><i className=" material-icons">menu</i></a>
                   <ul className="right">
                     <li className="hide"><a href="sass.html"><i className="material-icons">search</i></a></li>
@@ -428,6 +428,9 @@ var MyNotesApp = React.createClass({
   },
   componentDidUpdate(prevProps, prevState) {
     $('.cards-container').isotope( 'prepended', $('.note-'+(this.state.notes.length-1)) );
+    setTimeout(function() {
+      $('.cards-container').isotope('layout');
+    }, 500);
   },
 	componentDidMount: function() {
 
