@@ -199,15 +199,16 @@ main{
 .note-title{
     font-size: 1.58rem;
 }
-.createNoteButton {
-    width: 65px !important;
-    height: 65px !important;
+@media only screen and (min-width : 992px) {
+    .createNoteButton {
+        width: 65px !important;
+        height: 65px !important;
+    }
+    .createNoteButton i{
+        line-height: 65px  !important;
+        font-size: 2rem;
+    }
 }
-.createNoteButton i{
-    line-height: 65px  !important;
-    font-size: 2rem;
-}
-
 
 @media only screen and (max-width : 992px) {
       header, main, footer {
