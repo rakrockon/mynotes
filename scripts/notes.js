@@ -482,7 +482,7 @@ var MyNotesApp = React.createClass({
 			  		<div className="cards-container" id="notesContainer">
 			  			<Notes notes={this.state.notes} />
 			      </div>
-            <a className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">add</i></a>
+            <a className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">mode_edit</i></a>
 			  	</main>
 			  	<ToolTip />
           <CreateNote currentIndex={this.state.notes.length} noteActionButtonClick={this.noteActionButtonClick}/>
