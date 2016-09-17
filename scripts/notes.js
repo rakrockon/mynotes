@@ -1,3 +1,34 @@
+var notesString = localStorage.getItem("notes");
+var notes;
+if(notesString){
+  notes = JSON.parse(notesString);
+} else {
+  notes = [
+    {
+      "index": 0,
+      "color": "Yellow",
+      "title": "Welcome to Scribble",
+      "content": "You can scribble all your wonderful ideas in one place. Just click on the create icon at the bottom right to start.",
+      "status": "current"
+    },
+    {
+      "index": 1,
+      "color": "Orange",
+      "title": "Colors",
+      "content": "You can change the color of the note by clicking on the pallete icon for each note to categorize them.",
+      "status": "current"
+    },
+    {
+      "index": 2,
+      "color": "Blue",
+      "title": "Status",
+      "content": "You can change the status of the notes to keep only the current notes in your main section.",
+      "status": "current"
+    }
+  ];
+}
+
+
 var colors = [
 	{
 		class: "white",
@@ -296,6 +327,8 @@ var Note = React.createClass({
 			noteColor : colorClass,
       color : color
 		});	
+    this.props.note.color = color;
+    this.props.updateNoteStatus(this.props.note);
 	},
 	actionSelected: function (action) {
 		var status = "";
@@ -307,9 +340,11 @@ var Note = React.createClass({
 			status = "trash";
 		}
 		this.setState({
-			noteMainClass : "card mynote-card hoverable "+this.state.noteColor+" "+status
-		});	
-		var that = this;
+			noteMainClass : "card mynote-card hoverable "+this.state.noteColor+" "+status,
+      status : status
+		});
+    this.props.note.status = status;
+    this.props.updateNoteStatus(this.props.note);
 		this.refs.ActionItmesRef.showActionItmes(status);
 		setTimeout(function() {
   			$('.cards-container').isotope();
@@ -343,11 +378,14 @@ var Notes = React.createClass({
   updateNote: function (note) {
     this.props.openNoteModalBtn(note);
   },
+  updateNoteStatus: function (note) {
+    this.props.noteActionButtonClick(note,"update");
+  },
 	render() {
 		var notes = [];
     var that = this;
 		this.props.notes.forEach(function(note) {
-			notes.push(<Note updateNote={that.updateNote} note={note} key={note.index} colors={colors}/>);
+			notes.push(<Note updateNoteStatus={that.updateNoteStatus} updateNote={that.updateNote} note={note} key={note.index} colors={colors}/>);
 	    });
 		return (
 			<div>
@@ -360,29 +398,7 @@ var Notes = React.createClass({
 var MyNotesApp = React.createClass({
   getInitialState: function() {
     return {
-     notes :[
-  {
-    "index": 0,
-    "color": "White",
-    "title": "Welcome to Scribble",
-    "content": "You can scribble all your wonderful ideas in one place. Just click on the create icon at the bottom right to start.",
-    "status": "current"
-  },
-  {
-    "index": 1,
-    "color": "Orange",
-    "title": "Colors",
-    "content": "You can change the color of the note by clicking on the pallete icon for each note to categorize them.",
-    "status": "current"
-  },
-  {
-    "index": 2,
-    "color": "Blue",
-    "title": "Status",
-    "content": "You can change the status of the notes to keep only the current notes in your main section.",
-    "status": "current"
-  }
-],
+     notes : notes,
       note: {},
       type : "create"
     };
@@ -404,6 +420,7 @@ var MyNotesApp = React.createClass({
       notes: notes,
       note: note
     });
+    localStorage.setItem("notes", JSON.stringify(notes));
   },
   openNoteModalBtn: function (note) {
     $('#create-note-modal').openModal();
@@ -460,7 +477,7 @@ var MyNotesApp = React.createClass({
 			  	<Header />
 			  	<main>
 			  		<div className="cards-container" id="notesContainer">
-			  			<Notes notes={this.state.notes} openNoteModalBtn={this.openNoteModalBtn}/>
+			  			<Notes notes={this.state.notes} openNoteModalBtn={this.openNoteModalBtn} noteActionButtonClick={this.noteActionButtonClick}/>
 			      </div>
             <a onClick={this.openNoteModalBtn.bind(this,null)} className="btn-floating btn-large waves-effect waves-light teal createNoteButton tooltipped" data-tooltip="Add Note" href="#create-note-modal"><i className="material-icons">mode_edit</i></a>
 			  	</main>
