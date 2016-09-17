@@ -199,9 +199,10 @@ main{
 }
 #create-note-modal .colors-container{
     padding: 10px 0;
-    top: 55px;
+    bottom: 50px;
     right: 50px;
     z-index: 2;
+    top: inherit;
 }
 .modal .modal-footer{
     background: transparent;

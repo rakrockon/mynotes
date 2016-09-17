@@ -272,7 +272,8 @@ var Note = React.createClass({
 			noteActionItemsClass: "note-action-items",
 			noteMainClass : "card mynote-card hoverable",
 			noteColor : "",
-			status : this.props.note.status
+			status : this.props.note.status,
+      color : this.props.note.color
 		};
 	},
 	colorMouseOver: function () {
@@ -286,13 +287,14 @@ var Note = React.createClass({
 	},
 	setColor: function (color) {
 		var colorClass = "";
-	for (var i = 0; i < this.props.colors.length; i++) {
-		if(this.props.colors[i].color == color)
-			colorClass = this.props.colors[i].class;
-	}
-	this.setState({
+  	for (var i = 0; i < this.props.colors.length; i++) {
+  		if(this.props.colors[i].color == color)
+  			colorClass = this.props.colors[i].class;
+  	}
+  	this.setState({
 			noteMainClass : "card mynote-card hoverable "+colorClass+" "+this.props.note.status+" note-"+this.props.note.index,
-			noteColor : colorClass
+			noteColor : colorClass,
+      color : color
 		});	
 	},
 	actionSelected: function (action) {
@@ -314,16 +316,16 @@ var Note = React.createClass({
 		}, 0);
 	},
   updateNote: function (note) {
+    note.color = this.state.color;
     this.props.updateNote(note);
   },
 	componentWillMount() {
 		this.setColor(this.props.note.color);
 	},
-	render: function(){
-		
+	render: function(){		
 		return (
-		  <div ref="noteComponent" className={this.state.noteMainClass} onClick={this.updateNote.bind(this,this.props.note)}>
-		    <div className="card-content">
+		  <div ref="noteComponent" className={this.state.noteMainClass}>
+		    <div className="card-content" onClick={this.updateNote.bind(this,this.props.note)}>
 		      <span className="card-title">{this.props.note.title}</span>
 		      <p>{this.props.note.content}</p>
 		    </div>
@@ -341,9 +343,6 @@ var Notes = React.createClass({
   updateNote: function (note) {
     this.props.openNoteModalBtn(note);
   },
-	componentDidMount: function() {
-		
-	},
 	render() {
 		var notes = [];
     var that = this;
@@ -362,72 +361,48 @@ var MyNotesApp = React.createClass({
   getInitialState: function() {
     return {
      notes :[
-        {
-          "index": 0,
-          "color": "Red",
-          "title": "Tsunamia",
-          "content": "Aliquip sunt sit eu ea irure veniam ad deserunt ut. Velit culpa dolor officia veniam nisi elit Lorem veniam irure non pariatur id magna ad. Lorem fugiat ullamco do cupidatat velit exercitation exercitation fugiat. Eu officia voluptate non minim enim anim culpa in ea. Sint mollit pariatur ipsum in do minim ex tempor irure nulla cillum tempor ad non. Aliqua culpa sunt Lorem adipisicing eiusmod qui adipisicing. Ullamco laborum culpa et reprehenderit officia est incididunt ipsum.\r\n",
-          "status": "archive"
-        },
-        {
-          "index": 1,
-          "color": "Yellow",
-          "title": "Futuris",
-          "content": "Consequat enim tempor do ipsum ex duis amet. Culpa commodo cillum sit id esse labore aute quis. Laborum veniam deserunt do eiusmod id enim nulla excepteur.\r\n",
-          "status": "current"
-        },
-        {
-          "index": 2,
-          "color": "Red",
-          "title": "Lumbrex",
-          "content": "Non laboris fugiat esse irure minim pariatur sit ullamco dolor fugiat Lorem. Aute culpa do adipisicing amet Lorem ut nulla eiusmod pariatur consectetur enim nostrud elit. Elit fugiat cillum eiusmod nulla nulla consequat deserunt. Duis culpa eu mollit eu. Esse incididunt commodo ullamco deserunt elit.\r\n",
-          "status": "archive"
-        },
-        {
-          "index": 3,
-          "color": "Teal",
-          "title": "Tripsch",
-          "content": "Non non ullamco esse in fugiat duis consequat laborum eiusmod ex. Nulla irure enim occaecat anim culpa et ut. Aute occaecat aliquip eiusmod proident nulla esse do labore culpa deserunt. Reprehenderit eu incididunt mollit et eiusmod anim qui veniam magna amet aliqua magna. Ipsum ipsum laboris elit ipsum occaecat culpa exercitation non tempor amet velit exercitation nisi aliquip. Consectetur voluptate nisi excepteur cillum ipsum tempor officia non cupidatat sint mollit do labore consequat. Et culpa dolore id nostrud ipsum officia amet reprehenderit non.\r\n",
-          "status": "current"
-        },
-        {
-          "index": 4,
-          "color": "Blue",
-          "title": "Acium",
-          "content": "Voluptate ex nostrud esse nostrud. Dolore id deserunt deserunt ad minim fugiat. Consequat anim eu aliquip voluptate fugiat cupidatat.\r\n",
-          "status": "current"
-        },
-        {
-          "index": 5,
-          "color": "Red",
-          "title": "Chillium",
-          "content": "Minim velit ad anim laborum. Aliqua laboris dolore ex dolore Lorem. Reprehenderit incididunt excepteur quis dolor eiusmod ea reprehenderit dolor magna commodo sunt duis aute Lorem. Irure ea culpa irure mollit. Deserunt tempor magna proident labore adipisicing incididunt velit pariatur commodo.\r\n",
-          "status": "trash"
-        },
-        {
-          "index": 6,
-          "color": "Orange",
-          "title": "Satiance",
-          "content": "Aliqua nisi esse reprehenderit sit duis proident exercitation. Officia ea aliquip non proident id velit ea tempor cillum Lorem in. Irure consequat sint velit exercitation cupidatat enim cupidatat ipsum enim.\r\n",
-          "status": "archive"
-        }
-      ] ,
-      note: {}
+  {
+    "index": 0,
+    "color": "White",
+    "title": "Welcome to Scribble",
+    "content": "You can scribble all your wonderful ideas in one place. Just click on the create icon at the bottom right to start.",
+    "status": "current"
+  },
+  {
+    "index": 1,
+    "color": "Orange",
+    "title": "Colors",
+    "content": "You can change the color of the note by clicking on the pallete icon for each note to categorize them.",
+    "status": "current"
+  },
+  {
+    "index": 2,
+    "color": "Blue",
+    "title": "Status",
+    "content": "You can change the status of the notes to keep only the current notes in your main section.",
+    "status": "current"
+  }
+],
+      note: {},
+      type : "create"
     };
   },
   noteActionButtonClick: function (note,type) {
     var notes = this.state.notes;
     if(type == "create"){
       notes.push(note);
+      this.setState({
+        type: "create" 
+      });
     } else {
-      notes.forEach(function(n) {
-        if(n.index == note.index){
-          notes[n.index] == note;
-        }
+      notes[note.index] = note;
+      this.setState({
+        type: "update" 
       });
     }
     this.setState({
-      notes: notes
+      notes: notes,
+      note: note
     });
   },
   openNoteModalBtn: function (note) {
@@ -435,29 +410,31 @@ var MyNotesApp = React.createClass({
     var div = document.getElementById("note-content");
     this.refs.creatNote.loadNote(note);
     div.onfocus = function() {
-        window.setTimeout(function() {
-            var sel, range;
-            if (window.getSelection && document.createRange) {
-                range = document.createRange();
-                range.selectNodeContents(div);
-                range.collapse(true);
-                sel = window.getSelection();
-                sel.removeAllRanges();
-                sel.addRange(range);
-            } else if (document.body.createTextRange) {
-                range = document.body.createTextRange();
-                range.moveToElementText(div);
-                range.collapse(true);
-                range.select();
-            }
-        }, 1);
+      window.setTimeout(function() {
+        var sel, range;
+        if (window.getSelection && document.createRange) {
+          range = document.createRange();
+          range.selectNodeContents(div);
+          range.collapse(true);
+          sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        } else if (document.body.createTextRange) {
+          range = document.body.createTextRange();
+          range.moveToElementText(div);
+          range.collapse(true);
+          range.select();
+        }
+      }, 1);
     };
     div.focus();
   },
   componentDidUpdate(prevProps, prevState) {
-    $('.cards-container').isotope( 'prepended', $('.note-'+(this.state.notes.length-1)) );
+    if(this.state.type == "create"){
+      $('.cards-container').isotope( 'prepended', $('.note-'+(this.state.notes.length-1)) );
+    }
     setTimeout(function() {
-      $('.cards-container').isotope('layout');
+      $('.cards-container').isotope();
     }, 500);
   },
 	componentDidMount: function() {
@@ -500,13 +477,14 @@ var CreateNote = React.createClass({
       noteTitle: "",
       noteContent:"",
       createNoteModalClass : "modal",
-      noteColor: "white",
+      noteColor: "White",
       note : this.props.note,
       noteActionType: "create"
     };
   },
   loadNote: function (note) {
     if(note){
+      $('#note-color-picker').hide();
       this.setColor(note.color);
       this.setState({
         noteTitle: note.title,
@@ -514,11 +492,19 @@ var CreateNote = React.createClass({
         noteActionType: "udpate",
         note: note
       });
-      this.refs.noteTitleRef.innerText = note.title;
-      this.refs.noteContentRef.innerText = note.content;
+
       $('.note-placeholder').hide();
+      this.refs.noteTitleRef.innerText = note.title;
+      if(note.title.length == 0){
+        $('#note-title-placeholder').show();
+      }
+      this.refs.noteContentRef.innerText = note.content;
+      if(note.content.length == 0){
+        $('#note-content-placeholder').show();
+      }
     }else{
       this.setColor("White");
+      $('#note-color-picker').show();
       this.setState({
         noteTitle: "",
         noteContent: "", 
@@ -561,7 +547,7 @@ var CreateNote = React.createClass({
     this.setState({
       createNoteModalClass : "modal "+colorClass,
       noteColor : color
-    }); 
+    });
   },
   noteDonebtn: function (type) {
     var note = {};
@@ -595,7 +581,7 @@ var CreateNote = React.createClass({
         </div>
         <div className="modal-footer">
           <a onClick={this.noteDonebtn.bind(this,"save")} href="#!" className="waves-effect waves-green btn-flat">Done</a>
-          <a ref="colorsRef" className="change-color blue-grey-text text-darken-2 right tooltipped" data-tooltip="Change Colors" href="#!"  onMouseOver={this.colorMouseOver} onMouseOut={this.colorMouseOut}><i className="material-icons">color_lens</i></a>
+          <a id="note-color-picker" ref="colorsRef" className="change-color blue-grey-text text-darken-2 right tooltipped" data-tooltip="Change Colors" href="#!"  onMouseOver={this.colorMouseOver} onMouseOut={this.colorMouseOut}><i className="material-icons">color_lens</i></a>
           <ColorSelector className="colors-container" ref="colorSelector" colors={this.props.colors} currentColor={this.state.noteColor} changeColor={this.changeColor}/>
         </div>
       </div>
