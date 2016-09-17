@@ -1,6 +1,6 @@
 var notesString = localStorage.getItem("notes");
 var notes;
-if(notesString){
+if(notesString && notesString!="null"){
   notes = JSON.parse(notesString);
 } else {
   notes = [
@@ -8,21 +8,42 @@ if(notesString){
       "index": 0,
       "color": "Yellow",
       "title": "Welcome to Scribble",
-      "content": "You can scribble all your wonderful ideas in one place. Just click on the create icon at the bottom right to start.",
+      "content": "You can scribble all your ideas in one place. Just click on the icon at the bottom right to start.",
       "status": "current"
     },
     {
-      "index": 1,
+      "index": 3,
+      "color": "Blue",
+      "title": "Status",
+      "content": "You can change the status of the notes to keep only the current notes in your main section.",
+      "status": "current"
+    },
+    {
+      "index": 2,
       "color": "Orange",
       "title": "Colors",
       "content": "You can change the color of the note by clicking on the pallete icon for each note to categorize them.",
       "status": "current"
     },
     {
-      "index": 2,
-      "color": "Blue",
-      "title": "Status",
-      "content": "You can change the status of the notes to keep only the current notes in your main section.",
+      "index": 1,
+      "color": "Grey",
+      "title": "Update",
+      "content": "Click on any note to update the note. Notes created/updated in the device are saved in the device to be accessed at any time.",
+      "status": "current"
+    },
+    {
+      "index": 4,
+      "color": "Teal",
+      "title": "Feedback",
+      "content": "Please share your feedback on any issues or changes you think makes the application better by clicking on the share feedback link. I will try to incorporate the feedback into the application.",
+      "status": "current"
+    },
+    {
+      "index": 5,
+      "color": "Green",
+      "title": "Upcoming Features",
+      "content": "Authentication, User Management, Add label to notes, Share notes with other users, Access your saved notes from any device (mobile/tablet/PC/Mac)",
       "status": "current"
     }
   ];
@@ -121,7 +142,7 @@ var SideMenu = React.createClass({
             <li><a id="btn-trash" className="sideBorder noteStatusBtn waves-effect waves-teal " onClick={this.showNotes.bind(this,"trash")}><i className="material-icons">delete</i>Trash</a></li>
             <li><div className="divider"></div></li>
             <li><a className="sideBorder waves-effect settings-modal-trigger" ><i className="material-icons">settings</i>Settings</a></li>
-            <li><a className="sideBorder waves-effect" href="#!"><i className="material-icons">announcement</i>Send Feedback</a></li>
+            <li><a className="sideBorder waves-effect" href="mailto:rakesh.chintha@neudesic.com?Subject=Feedback%20on%20Scribble"><i className="material-icons">announcement</i>Send Feedback</a></li>
             <li><a className="sideBorder waves-effect" href="#!"><i className="material-icons">help</i>Help</a></li>
             <li><div className="divider"></div></li>
             <li><a className="sideBorder waves-effect waves-red" href="#!"><i className="material-icons">power_settings_new</i>Log Out</a></li>
