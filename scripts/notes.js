@@ -15,7 +15,7 @@ if(notesString && notesString!="null"){
       "index": 3,
       "color": "Blue",
       "title": "Status",
-      "content": "You can change the status of the notes to keep only the current notes in your main section.",
+      "content": "You can change the status of the notes to classify notes as archived/trash/current.",
       "status": "current"
     },
     {
